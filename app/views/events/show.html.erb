@@ -1,7 +1,24 @@
 <h1> Event #<%= @this_event.id%></h1>
 <div> 
-	<p> Event of <%= @this_event.creator.name.capitalize %><br/>
-	<br/>
-	Description : <br/>
-	<%= @this_event.description %></p>
+	<p> 
+		<h4>Event of <%= @this_event.creator.name.capitalize %></h4>
+		Description : <br/>
+		<%= @this_event.description %><br/>
+		Date : <%= @this_event.date %><br/>
+		Place : <%= @this_event.place %><br/>
+		Creator : <a href="<%= user_path((@this_event.creator.id))%>"><%= @this_event.creator.name %></a>
+	</p>
+	<p>
+		<h4>Attendance</h4>
+		<% unless @this_event.attendees.count == 0%>
+			List of attendees : <br/>
+			<ul>
+			<%= @this_event.attendees.each do |attendee| %>
+				<li> <a href="<%= user_path(attendee.id) %>"> <%=attendee.name.capitalize %> </a> </li>
+			<% end %></ul>
+			<!-- A cet endroit là, on a dans la view les attendees qui s'affichent ... On ne sait pas pourquoi. Si vous avez une idée, n'hésitez pas !  --> 
+		<% else %>
+			Ho, it's sad : there is no attendee.  
+		<% end %>
+	</p>
 </div>
