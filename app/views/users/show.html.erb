@@ -1,2 +1,14 @@
 <h1>Profile of User</h1>
 <p>Name : <%= @this_user.name %></p>
+<div> 
+	<% unless @this_user.created_events.count == 0 %>
+		<p> Events created by <%= @this_user.name %> :</p> 
+		<% @this_user.created_events.each_with_index do |event, index| %>
+			<p> Event <%= index+1 %> :</p>
+			<p> <%= event.description %> </p>
+			<a href="<%= event_path(event.id)%>"> Visit for more details </a> 
+		<% end %>
+	<% else %>
+		<p><%= @this_user.name.capitalize %> didn't create a event.</p>
+	<% end %> 
+</div>

@@ -6,12 +6,23 @@ class EventsController < ApplicationController
 	end
 
 	def create
-		this_event = Event.new
-		this_event.description = params.require(:event).permit(:description)
-		this_event.place = params.require(:event).permit(:place)
-		this_event.date = params.require(:event).permit(:date)
-		this_event.creator = current_user
-		this_event.save
-		redirect_to event_path(this_event.id)
+		if current_user
+			this_event = Event.new(params.require(:event).permit(:description, :place, :date))
+			this_event.creator = current_user
+			this_event.save
+		
+			redirect_to event_path(this_event.id)
+		else
+			flash[:alert] = "You should be connected to create a event."
+			redirect_to new_event_path
+		end
+	end
+
+	def index
+		@list_events = Event.all
+	end
+
+	def show
+		@this_event = Event.find_by(params.permit(:id))
 	end
 end

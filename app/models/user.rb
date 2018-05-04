@@ -4,8 +4,7 @@ class User < ApplicationRecord
 	# class_name : il ne faut pas aller voir la classe created event mais la classe Event
 	# dependant : lorsque un  user sera détruit, les événements qui lui sont rattachés seront aussi détruits
 	# foreignkey : on indique le nom de la clé étrangère dans la classe Event.
-	has_many :created_event, class_name: 'Event', dependent: :destroy , foreign_key: 'creator_id'
-	
+	has_many :created_events, class_name: 'Event', dependent: :destroy , foreign_key: 'creator_id'
 
 	has_and_belongs_to_many :attended_events, 
 		# Ca désigne le model event, attented event est que le nom de l'attribut

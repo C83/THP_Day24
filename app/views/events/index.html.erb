@@ -1,0 +1,14 @@
+<h1> List of events </h1>
+<div> 
+	<% unless @list_events.count == 0 %> 
+		<% @list_events.each_with_index do |event, index| %>
+			<p> Event <%= index+1 %>, by : <%= event.creator.name %><br/>
+			<%= event.description %> <br/>
+			<a href="<%= event_path(event.id)%>"> Visit for more details </a> 
+			<br/>
+			<br/>
+		<% end %>
+	<% else %>
+		<p> There is no created event :'(</p>
+	<% end %> 
+</div>

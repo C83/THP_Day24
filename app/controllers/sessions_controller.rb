@@ -6,11 +6,11 @@ class SessionsController < ApplicationController
   def create
   	user = User.find_by(params.require(:session).permit(:name))
     if user
-      flash.now[:notice] = 'Tu es connecté'
+      flash[:notice] = "Tu es connecté"
       log_in user
-      redirect_to user
+      redirect_to user, notice: "Tu es connecté"
 	else
-      flash.now[:notice] = 'Invalid email/password combination'
+      flash[:alert] = "Invalid email/password combination"
       render 'new'
     end
   end
