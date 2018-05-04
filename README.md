@@ -4,6 +4,8 @@
 
 ### You want to see the job, go here : https://polar-retreat-69774.herokuapp.com/
 
+_Made 3.5 and until part 3.2_
+
 We had to make a great event site to be able to create events and invite other users to these events and see the date and location of the event on the site. But unfortunately the reality is very different :( <br/><br/>
 
 * The app has 2 models: ```users``` and ``events``, a user with a name and can create multiple ```events```, it can also attendee for ```events``` <br/>
@@ -28,6 +30,13 @@ We had to make a great event site to be able to create events and invite other u
 ## Now 
 
 You can check the code of the application on github or clone it if the instructions ask for it, in this case do not forget to type ```bundle install``` once in the repo folder.
+
+Then, you can 
+```rails db:drop```
+```rails db:create```
+```rails db:migrate```
+```rails db:seed ``` 
+to have a clear database.
 
 ## Team 
 
